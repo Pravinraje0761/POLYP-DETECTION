@@ -1,0 +1,24 @@
+{
+  "total_counts": {
+    "CVC-ColonDB": 380,
+    "Kvasir-SEG": 1000,
+    "CVC-ClinicDB": 672
+  },
+  "split_counts": {
+    "train": {
+      "CVC-ColonDB": 265,
+      "Kvasir-SEG": 702,
+      "CVC-ClinicDB": 469
+    },
+    "val": {
+      "CVC-ColonDB": 60,
+      "Kvasir-SEG": 140,
+      "CVC-ClinicDB": 107
+    },
+    "test": {
+      "CVC-ColonDB": 55,
+      "Kvasir-SEG": 158,
+      "CVC-ClinicDB": 96
+    }
+  }
+}
