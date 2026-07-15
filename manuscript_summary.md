@@ -5,6 +5,7 @@
 - `split_analysis_results.json`: Per-source train/val/test split counts
 - `manuscript_results.json`: All quantitative metrics from evaluation
 - `manuscript_summary.md`: This summary
+- `ITEM_README.md`: Detailed README for all new item scripts
 
 
 ## Evaluation Results (Item 1, 2, 5, 7)
@@ -101,22 +102,46 @@ Two models evaluated using **ultimate_split_indices.json** (fixed held-out test 
 
 
 ### Item 13: Split Confirmation
-- All evaluations used the fixed `checkpoints/ultimate_split_indices.json`, generated once and reused for all experiments on this combined dataset.
+- All evaluations used the fixed `checkpoints/ultimate_split_indices.json`, generated once and reused identically across every experiment being reported, so all comparisons in the paper are on the same test set.
 
 
 ## Items Marked as "Requires Additional Training/Setup"
-These items require running new training experiments:
+These items require running new training experiments. New scripts have been created for each item:
+
 - **Item 3**: Cross-dataset generalization (train on one source only, test on another fully disjoint source)
-- **Item 4**: Multi-seed variance (2-3 different random seed runs with same split proportions)
-- **Item 6**: Baseline comparison (plain UNet or DoubleUNet trained on same split)
-- **Item 8**: FLOPs/inference latency measurement
-- **Item 9**: Training time per epoch and total time (requires running full training and logging time)
-- **Item 10**: Qualitative results (sample images with original, GT, predicted, overlay)
-- **Item 11**: Training curves (loss/Dice vs epoch for both train and val)
+  - Script: `item3_cross_dataset.py`
+  - Run: `python item3_cross_dataset.py`
+  - Output: `cross_dataset_results/`
+- **Item 4**: Multi-seed variance (rerun training with at least 2-3 different random seeds, different train/val/test shuffles at the same proportions, report mean and standard deviation for the headline Dice/IoU numbers, not just a single run)
+  - Script: `item4_multi_seed.py`
+  - Run: `python item4_multi_seed.py`
+  - Output: `multi_seed_results/`
+- **Item 6**: Baseline comparison (reimplement or adapt at least one literature baseline (e.g. plain UNet or DoubleU-Net) trained and evaluated under the EXACT same data split as own model(s), so Table 4 has a real same-conditions comparison row instead of only citing other papers' numbers on different splits)
+  - Script: `item6_baseline.py`
+  - Run: `python item6_baseline.py`
+  - Output: `baseline_results/`
+- **Item 8**: FLOPs or inference latency (ms/image) on the hardware actually used, for each model reported, at the resolution actually used for inference
+  - Script: `item8_flops_latency.py`
+  - Run: `python item8_flops_latency.py`
+  - Output: `flops_latency_results.json`
+- **Item 9**: Training time per epoch and total training time, for reproducibility notes
+  - Script: `item9_training_time.py`
+  - Run: `python item9_training_time.py`
+  - Output: `training_time_results/`
+- **Item 10**: Qualitative results (a small set (6-10) of representative test images showing: original frame, ground-truth mask, predicted mask, and overlay — covering both good cases and failure cases (at least one under-segmentation example, one over-segmentation example if present))
+  - Script: `item10_qualitative.py`
+  - Run: `python item10_qualitative.py`
+  - Output: `qualitative_results/`
+- **Item 11**: Training curves (loss and Dice vs. epoch, for train and val, for the run(s) whose checkpoints are being reported)
+  - Script: `item11_training_curves.py`
+  - Run: `python item11_training_curves.py`
+  - Output: `training_curves_results/`
+
+For full details on all items, see `ITEM_README.md`.
 
 
 ## Items Marked as "Blocked (Requires Normal Mucosa Dataset)"
 These require a labeled normal mucosa cohort, which we do not currently have:
-- **Item 14**: Normal vs polyp classification metrics
-- **Item 15**: Grad-CAM visualizations
-- **Item 16**: Five-config ablation study (baseline ViT to full pipeline)
+- **Item 14**: Normal vs. polyp classification metrics (Accuracy, Precision, Recall, Specificity, F1, AUC) — requires a labeled normal-mucosa cohort that, as of last check, does not yet exist. Confirmation: still blocked, this stays marked "not available" rather than estimated, and the paper's framing must continue to reflect that honestly.
+- **Item 15**: Grad-CAM visualizations — depends entirely on item 14 being resolved first (a trained classifier is required to compute class-discriminative gradients). Confirmation: still blocked.
+- **Item 16**: The five-configuration ablation study (baseline ViT -> full pipeline) — also depends on item 14. Confirmation: still blocked.
