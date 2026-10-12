@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this code or build on its findings, please cite the paper below."
+title: "When More Preprocessing Hurts: Distribution Shift and Failure of Segmentation-Guided Colorectal Polyp Classification (code)"
+type: software
+license: MIT
+repository-code: "https://github.com/Pravinraje0761/POLYP-DETECTION"
+keywords:
+  - colorectal polyp
+  - colonoscopy
+  - semantic segmentation
+  - vision transformer
+  - distribution shift
+  - region-of-interest gating
+  - dataset leakage
+authors:
+  - given-names: "Pravin Raj"
+    family-names: "E"
+    email: "epravinraj0761@gmail.com"
+    affiliation: "Department of Artificial Intelligence and Data Science, Chennai Institute of Technology, Chennai, India"
+  - given-names: "Nishanthini"
+    affiliation: "Department of Artificial Intelligence and Data Science, Chennai Institute of Technology, Chennai, India"
+preferred-citation:
+  type: article
+  status: in-preparation
+  title: "When More Preprocessing Hurts: Distribution Shift and Failure of Segmentation-Guided Colorectal Polyp Classification"
+  year: 2026
+  authors:
+    - given-names: "Pravin Raj"
+      family-names: "E"
+      email: "epravinraj0761@gmail.com"
+      affiliation: "Department of Artificial Intelligence and Data Science, Chennai Institute of Technology, Chennai, India"
+    - given-names: "Nishanthini"
+      affiliation: "Department of Artificial Intelligence and Data Science, Chennai Institute of Technology, Chennai, India"
