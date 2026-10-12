@@ -1,38 +1,44 @@
-
-# Virtual environment
+# Virtual environments
 .venv/
+venv/
 
-# Python cache
+# Python cache / packaging
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
+build/
+dist/
 
-# Checkpoints (large model files)
+# Model weights and run outputs (too large for git; see docs/DATA.md)
 checkpoints/
+*.pth
+*.pt
+*.ckpt
 outputs/
+ablation_outputs/
+*_results/
+runs/
 
-# Datasets
+# Datasets (public; download instructions in docs/DATA.md)
+data/raw/
 combined_dataset/
+combined_dataset_classification*/
 archive\ (1)/
 hyper-kvasir-labeled-images\ (1)/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
 
 # Logs
 *.log
 logs/
 logs_improved/
 
-# Jupyter notebooks
+# Notebooks
 .ipynb_checkpoints/
 
-# OS files
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
 .DS_Store
 Thumbs.db
-
-# Tensorboard
-runs/

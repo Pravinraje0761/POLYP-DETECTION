@@ -1,0 +1,18 @@
+# Conda environment matching the software versions reported in the paper (Section 5.1):
+# Python 3.10.11, PyTorch 2.6.0 (CUDA 12.4 build), torchvision 0.21.0, timm 1.0.28, albumentations 2.0.8.
+# Experiments were run on a single NVIDIA RTX 3060 (12 GB).
+#
+#   conda env create -f environment.yml
+#   conda activate polypgate
+name: polypgate
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10.11
+  - pip
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu124
+      - torch==2.6.0
+      - torchvision==0.21.0
+      - -r requirements.txt
+      - -e .

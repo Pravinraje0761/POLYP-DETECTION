@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polypgate"
+version = "0.1.0"
+description = "Code for 'When More Preprocessing Hurts: Distribution Shift and Failure of Segmentation-Guided Colorectal Polyp Classification'"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Pravin Raj E", email = "epravinraj0761@gmail.com" }]
+requires-python = ">=3.10"
+keywords = ["colonoscopy", "polyp", "segmentation", "vision transformer", "distribution shift"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+
+[project.urls]
+Repository = "https://github.com/Pravinraje0761/POLYP-DETECTION"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["archive"]
+
+[tool.ruff.lint]
+# Only correctness checks; style is not enforced on research code.
+select = ["E9", "F63", "F7", "F82"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
